@@ -70,7 +70,7 @@
 -- TODO!
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS people;
-DROP TABLE IF EXISTS cast;
+DROP TABLE IF EXISTS crew;
 
 -- Create new tables, according to your domain model
 -- TODO!
@@ -87,10 +87,10 @@ CREATE TABLE people (
   name TEXT
 );
 
-CREATE TABLE cast (
+CREATE TABLE crew (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id TEXT,
-  cast_person_id INTEGER,
+  crew_person_id INTEGER,
   character_name TEXT
 );
 
@@ -114,29 +114,32 @@ INSERT INTO movies (title, year, mppa_rating, director_people_id) VALUES ("Batma
 INSERT INTO movies (title, year, mppa_rating, director_people_id) VALUES ("The Dark Knight", "2008", "PG-13", "1");
 INSERT INTO movies (title, year, mppa_rating, director_people_id) VALUES ("The Dark Knight Rises", "2012", "PG-13", "1");
 
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "2", "Bruce Wayne");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "3", "Alfred");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "4", "Ra's Al Ghul");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "5", "Rachel Dawes");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "6", "Commissioner Gordon");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "2", "Bruce Wayne");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "7", "Joker");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "8", "Harvey Dent");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "3", "Alfred");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "9", "Rachel Dawes");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "2", "Bruce Wayne");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "6", "Commissioner Gordon");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "10", "Bane");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "11", "John Blake");
-INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "12", "Selina Kyle");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("1", "2", "Bruce Wayne");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("1", "3", "Alfred");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("1", "4", "Ra's Al Ghul");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("1", "5", "Rachel Dawes");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("1", "6", "Commissioner Gordon");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("2", "2", "Bruce Wayne");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("2", "7", "Joker");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("2", "8", "Harvey Dent");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("2", "3", "Alfred");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("2", "9", "Rachel Dawes");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("3", "2", "Bruce Wayne");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("3", "6", "Commissioner Gordon");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("3", "10", "Bane");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("3", "11", "John Blake");
+INSERT INTO crew (movie_id, crew_person_id, character_name) VALUES ("3", "12", "Selina Kyle");
 
--- Prints a header for the movies output
+--Prints a header for the movies output
 .print "Movies"
 .print "======"
 .print ""
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT movies.title, movies.year, movies.mppa_rating, people.name
+FROM movies
+INNER JOIN people ON movies.director_people_id = people.id;
 
 -- Prints a header for the cast output
 .print ""
@@ -147,3 +150,6 @@ INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "12", "
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT movies.title, people.name, crew.character_name
+FROM movies INNER JOIN crew ON movies.id = crew.movie_id
+INNER JOIN people ON crew.crew_person_id = people.id;
