@@ -12,9 +12,7 @@
 -- - A movie has a single director
 -- - A person can be the director of and/or play a role in a movie
 -- - Everything you need to do in this assignment is marked with TODO!
-Movie(id, title, year, mppa_rating, director_person_id)
-Person(id, name)
-Cast(id, movie_id, cast_person_id, character_name)
+
 -- Rubric
 -- 
 -- There are three deliverables for this assignment, all delivered via
@@ -99,6 +97,38 @@ CREATE TABLE cast (
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO people (name) VALUES ("Christopher Nolan");
+INSERT INTO people (name) VALUES ("Christian Bale");
+INSERT INTO people (name) VALUES ("Michael Caine");
+INSERT INTO people (name) VALUES ("Liam Neeson");
+INSERT INTO people (name) VALUES ("Katie Holmes");
+INSERT INTO people (name) VALUES ("Gary Oldman"); --6
+INSERT INTO people (name) VALUES ("Heath Ledger");
+INSERT INTO people (name) VALUES ("Aaron Eckhart");
+INSERT INTO people (name) VALUES ("Maggie Gyllenhaal");
+INSERT INTO people (name) VALUES ("Tom Hardy"); --10
+INSERT INTO people (name) VALUES ("Joseph Gordon-Levitt");
+INSERT INTO people (name) VALUES ("Anne Hathaway");
+
+INSERT INTO movies (title, year, mppa_rating, director_people_id) VALUES ("Batman Begins", "2005", "PG-13", "1");
+INSERT INTO movies (title, year, mppa_rating, director_people_id) VALUES ("The Dark Knight", "2008", "PG-13", "1");
+INSERT INTO movies (title, year, mppa_rating, director_people_id) VALUES ("The Dark Knight Rises", "2012", "PG-13", "1");
+
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "2", "Bruce Wayne");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "3", "Alfred");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "4", "Ra's Al Ghul");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "5", "Rachel Dawes");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("1", "6", "Commissioner Gordon");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "2", "Bruce Wayne");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "7", "Joker");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "8", "Harvey Dent");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "3", "Alfred");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("2", "9", "Rachel Dawes");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "2", "Bruce Wayne");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "6", "Commissioner Gordon");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "10", "Bane");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "11", "John Blake");
+INSERT INTO cast (movie_id, cast_person_id, character_name) VALUES ("3", "12", "Selina Kyle");
 
 -- Prints a header for the movies output
 .print "Movies"
